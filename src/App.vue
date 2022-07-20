@@ -7,6 +7,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import axios from "axios";
 
 export default {
   name: 'App',
@@ -20,8 +21,15 @@ export default {
   },
   methods: {
     async showMsg(){
-      const { text } = await (await fetch("/api/message")).json();
-      this.message = text;
+      // const { text } = await (await fetch("/api/message")).json();
+      // const { text } = axios.get("/api/message").then((response) => {
+      //   console.log(response.data.text)
+      // })
+      axios.get("/api/message").then((response) => {
+        console.log(response.data.text)
+        this.message=response.data.text
+      })
+      // this.message = text;
     }
   }
 }
