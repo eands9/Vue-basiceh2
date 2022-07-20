@@ -13,7 +13,11 @@ export default {
   name: 'App',
   data() {
     return {
-      message: ""
+      message: "",
+      formData: {
+        emailSubject: "This is the passed email subject",
+        emailBody: "This is the passed email body"
+      }
     };
   },
   methods: {
@@ -30,9 +34,9 @@ export default {
       })
     },
     async sendmailWMsg(){
-      axios.get("/api/sendmailwmsg").then((response) => {
-        console.log(response)
-      })
+      axios
+        .post("/api/sendmailwmsg",this.formData)
+        .then((response) => {console.log(response)})
     }
   }
 }

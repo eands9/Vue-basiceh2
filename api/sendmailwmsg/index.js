@@ -31,9 +31,8 @@ module.exports = async function (context, req) {
             from: "kffsande@outlook.com",
             to: "kffsande@outlook.com",
             // subject: req.body.name + "'s order is shown below...",
-            subject: "Mail w Msg",
-            // text: req.
-            text: "Wow! That's Easy"
+            subject: req.body.emailSubject,
+            text: req.body.emailBody
         }
 
         transporter.sendMail(mailOptions,(error, info)=>{
