@@ -1,4 +1,6 @@
 <template>
+  <button @click="showMsg">Show Message</button>
+  {{ message }}
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
@@ -10,6 +12,17 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      message: ""
+    };
+  },
+  methods: {
+    async showMsg(){
+      const { text } = await (await fetch("/api/message")).json();
+      this.message = text;
+    }
   }
 }
 </script>
