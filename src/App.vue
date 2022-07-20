@@ -1,6 +1,7 @@
 <template>
   <button @click="showMsg">Show Message</button>
   {{ message }}
+  <button @click="sendmail">Send Mail</button>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
@@ -30,6 +31,11 @@ export default {
         this.message=response.data.text
       })
       // this.message = text;
+    },
+    async sendmail(){
+      axios.get("/api/sendmail").then((response) => {
+        console.log(response)
+      })
     }
   }
 }
