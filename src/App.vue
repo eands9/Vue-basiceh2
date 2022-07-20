@@ -2,38 +2,35 @@
   <button @click="showMsg">Show Message</button>
   {{ message }}
   <button @click="sendmail">Send Mail</button>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <input type="text" v-model="email_msg">
+  <button @click="sendmailWMsg">Send Mail w Message</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import axios from "axios";
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   data() {
     return {
       message: ""
     };
   },
   methods: {
+    // axios ref https://www.koderhq.com/tutorial/vue/http-axios/#api
     async showMsg(){
-      // const { text } = await (await fetch("/api/message")).json();
-      // const { text } = axios.get("/api/message").then((response) => {
-      //   console.log(response.data.text)
-      // })
       axios.get("/api/message").then((response) => {
         console.log(response.data.text)
         this.message=response.data.text
       })
-      // this.message = text;
     },
     async sendmail(){
       axios.get("/api/sendmail").then((response) => {
+        console.log(response)
+      })
+    },
+    async sendmailWMsg(){
+      axios.get("/api/sendmailwmsg").then((response) => {
         console.log(response)
       })
     }

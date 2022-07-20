@@ -1,9 +1,4 @@
 const nodemailer = require("nodemailer");
-// const express=require('express');
-// const app=express();
-
-// app.use(express.static('public'));
-// app.use(express.json())
 
 module.exports = async function (context, req) {
     let transporter = nodemailer.createTransport({
@@ -36,7 +31,8 @@ module.exports = async function (context, req) {
             from: "kffsande@outlook.com",
             to: "kffsande@outlook.com",
             // subject: req.body.name + "'s order is shown below...",
-            subject: "Test Subject 8",
+            subject: "Mail w Msg",
+            // text: req.
             text: "Wow! That's Easy"
         }
 
