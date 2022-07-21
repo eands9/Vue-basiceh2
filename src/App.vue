@@ -3,20 +3,29 @@
   {{ message }}
   <button @click="sendmail">Send Mail</button>
   <button @click="sendmailWMsg">Send Mail w Message</button>
+  <Products 
+    v-for="product in items"
+    :key="product.id"
+    :product="product"
+  />
+
 </template>
 
 <script>
 import axios from "axios";
+import Products from '@/components/Products.vue'
+import items from '@/data/items.js';
 
 export default {
   name: 'App',
+  components:{
+    Products
+  },
   data() {
     return {
+      items: items,
       message: "",
-      formData: {
-        emailSubject: "This is the passed email subject",
-        emailBody: "This is the passed email body"
-      }
+
     };
   },
   methods: {
@@ -28,13 +37,24 @@ export default {
       })
     },
     async sendmail(){
-      axios.get("/api/sendmail").then((response) => {
+      axios.get("http://vue-emailfa.azurewebsites.net/api/sendmail").then((response) => {
         console.log(response)
       })
     },
     async sendmailWMsg(){
+      var content = this.items.reduce(function(a,b){
+        return a + '<tr><td>' + b.id + '</a></td><td>' + b.name + '</td></tr>'
+      },'')
+
+      var formData = {
+        emailSubject: "Online Order",
+        // emailBody: "This is the passed email body"
+        emailBody: content
+      }
+
+      // .post("/api/sendmailwmsg",formData)
       axios
-        .post("/api/sendmailwmsg",this.formData)
+        .post("http://vue-emailfa.azurewebsites.net/api/sendmailwmsg",formData)
         .then((response) => {console.log(response)})
     }
   }
@@ -51,3 +71,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+
