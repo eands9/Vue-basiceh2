@@ -37,7 +37,7 @@ export default {
       })
     },
     async sendmail(){
-      axios.get("http://vue-emailfa.azurewebsites.net/api/sendmail").then((response) => {
+      axios.get("https://vue-emailfa.azurewebsites.net/api/sendmail").then((response) => {
         console.log(response)
       })
     },
@@ -54,7 +54,7 @@ export default {
 
       // .post("/api/sendmailwmsg",formData)
       axios
-        .post("http://vue-emailfa.azurewebsites.net/api/sendmailwmsg",formData)
+        .post("https://vue-emailfa.azurewebsites.net/api/sendmailwmsg",formData)
         .then((response) => {console.log(response)})
     }
   }
