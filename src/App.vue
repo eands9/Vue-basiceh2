@@ -2,7 +2,6 @@
   <button @click="showMsg">Show Message</button>
   {{ message }}
   <button @click="sendmail">Send Mail</button>
-  <input type="text" v-model="email_msg">
   <button @click="sendmailWMsg">Send Mail w Message</button>
 </template>
 
