@@ -1,0 +1,20 @@
+{
+  "auth": {
+    "rolesSource": "/api/GetRoles",
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "userDetailsClaim": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/66c6ce7c-963f-4d9a-b44c-f90fd0fc1163",
+          "clientIdSettingName": "9dd14a95-60b6-4fd7-a8f9-52044edbbec1",
+          "clientSecretSettingName": "neF8Q~H7BE-fi-AAc-fqYgq_UZ32.YIHGnEs3cfc"
+        },
+        "login": {
+          "loginParameters": [
+            "resource=https://graph.microsoft.com"
+          ]
+        }
+      }
+    }
+  }
+}
