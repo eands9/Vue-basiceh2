@@ -49,7 +49,8 @@ export default {
       var formData = {
         emailSubject: "Online Order",
         // emailBody: "This is the passed email body"
-        emailBody: content
+        emailBody: content,
+        orderTotal: 10
       }
 
       // .post("/api/sendmailwmsg",formData)
